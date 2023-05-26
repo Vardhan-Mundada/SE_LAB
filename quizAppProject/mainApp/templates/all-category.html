@@ -4,15 +4,15 @@
 {% block content%}
     <h1 class="my-4"> All Categories</h1>
     <div class="row">
+        {% for category in data %}
         <div class="col-md-4">
             <div class="card">
-                <img src="..." class="card-img-top" alt="Category Tite">
+                <a href="{% url 'cat_questions' category.id %}"><img src="{{category.image.url}}" class="card-img-top" alt="Category Tite"></a>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">  <a href="{% url 'cat_questions' category.id %}"> {{category.title}}</a> </h5>
                   </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 {% endblock %}
