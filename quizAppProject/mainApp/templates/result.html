@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{category.title}} Questions{% endblock %}
+{% block content%}
+    <h1 class="my-4">Result</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Submitted Answer</th>
+            <th>Right Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in result %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.question.question}}</td>
+            <td>{{row.right_choice}}</td>
+            <td>{{row.question.right_option}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+   
+{% endblock %}

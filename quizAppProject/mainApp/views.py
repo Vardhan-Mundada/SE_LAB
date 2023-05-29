@@ -51,7 +51,8 @@ def submit_answer(request,cat_id,quest_id):
         if question:
             return render(request, 'cat-questions.html', {'question':question, 'category': category})
         else:
-            return HttpResponse("No more questions")
+            result= models.SubAnswer.objects.filter(user=request.user)
+            return render(request, 'result.html', {'result':result})
         
     else:
         return HttpResponse('Method not allowed!')

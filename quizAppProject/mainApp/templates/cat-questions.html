@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}{{category.title}} Questions{% endblock %}
 {% block content%}
     <h1 class="my-4">{{category.title}} Questions</h1>
 
         <div class="card my-4">
-            <h4 class="card-header">{{question.question}}</h4>
+            <h4 class="card-header">{{question.question}} <span class="timer float-end"></span></h4>
             <form method="post" action="{% url 'submit_answer' category.id question.id %}">
                 {% csrf_token %}
                 <div class="card-body">
@@ -38,6 +38,7 @@
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'jQuery-countdownTimer-master/dist/js/jQuery.countdownTimer.min.js' %}"></script>
     <script>
         $(document).ready(function(){
             $(".sub").on('click', function(){
@@ -48,6 +49,16 @@
                     return false;
                 }
             });
+        
+        
+            $(".timer").countdowntimer({
+                seconds:"{{question.time_limit}}",
+                size : "sn",
+                timeUp:function(){
+                    $(".skip").trigger('click');
+                }
+            });
         });
+	
     </script>
 {% endblock %}
