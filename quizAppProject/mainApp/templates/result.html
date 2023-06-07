@@ -19,7 +19,13 @@
             <td>{{row.id}}</td>
             <td>{{row.question.question}}</td>
             <td>{{row.right_choice}}</td>
-            <td>{{row.question.right_option}}</td>
+            {% if row.right_choice == row.question.right_option  %}
+            <td class="bg-success text-white">{{row.question.right_option}}</td>
+            {% elif row.right_choice == 'Question Skipped' %}
+            <td class="bg-warning">{{row.question.right_option}}</td>
+            {% else %}
+            <td class="bg-danger ">{{row.question.right_option}}</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

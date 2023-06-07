@@ -2,6 +2,18 @@
 
 {% block title %}All Categories{% endblock %}
 
+{% block style %}
+<style>
+    .my-4{
+        color: white;
+    }
+    body{
+        min-height: 100vh;
+        background: linear-gradient(#141e30, #243b55);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
     <style>
         .my-4 {
@@ -10,10 +22,10 @@
             /* font-family: 'Roboto', sans-serif; */
             /* font-size: 36px; */
             font-family: 'Montserrat', sans-serif;font-size: 48px; font-weight: bold; 
-            color: #000000;
+            color: #ffffff;
             text-align: center;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
             animation: fadeInUp 1s ease-in-out;
         }
 
@@ -37,10 +49,10 @@
         }
 
         .card {
-            background-color: #1abc9c;
+            background-color: #9481e94d;
             border: none;
             border-radius: 10px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 2px 6px rgba(13, 5, 41, 0.63);
             transition: box-shadow 0.3s ease;
         }
 

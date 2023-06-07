@@ -2,19 +2,34 @@
 
 {% block title %}Login Page{% endblock %}
 
+{% block style %}
+<style>
+    .my-4{
+        color: white;
+    }
+    body{
+        min-height: 100vh;
+        background: linear-gradient(#141e30, #243b55);
+    }
+</style>
+{% endblock %}
 {% block content%}
     <center>
     <h1 class="my-4">Login</h1>
-</center>
+
+<div style="max-width: 420px; margin-top:0px ;">
     <form method="post" action="">
-        <table class="table table-custom" style="align-content: right;">
+        <table class="table-custom " style="align-content: right; padding: 2rem;">
             {% csrf_token %}
             {{form.as_table}}
             <tr>
-                <td colspan="2"> <input type="submit" class="btn btn-primary" style="margin-left: 36vw;" /></td>
+                <td colspan="2"> <input type="submit" class="btn btn-primary" style="margin-left: 35%;" /></td>
             </tr>
         </table>
     </form>
+</div>
+
     <a href="{% url 'register' %}">Register</a>
+</center>
 
 {% endblock %}
