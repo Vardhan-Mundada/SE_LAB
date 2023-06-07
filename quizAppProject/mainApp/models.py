@@ -31,7 +31,7 @@ def __str__(self):
 class SubAnswer(models.Model):
     question=models.ForeignKey(Question, on_delete=models.CASCADE)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    right_choice=models.CharField(max_length=200)
+    right_choice=models.TextField(max_length=200)
     
     class Meta:
          verbose_name_plural='Recorded Answer'

@@ -8,6 +8,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'home.html')
 
+
 def register(request):
     msg=None
     form=forms.RegisterUser
@@ -36,11 +37,11 @@ def submit_answer(request,cat_id,quest_id):
         category=models.Qcategory.objects.get(id=cat_id)
         question=models.Question.objects.filter(category=category, id__gt=quest_id).exclude(id=quest_id).order_by('id').first()
         if 'skip' in request.POST:
+            quest=models.Question.objects.get(id=quest_id)
+            user=request.user
+            answer='Question Skipped'
+            models.SubAnswer.objects.create(user=user, question=quest, right_choice=answer)
             if question:
-                quest=models.Question.objects.get(id=quest_id)
-                user=request.user
-                answer='Skipped'
-                models.SubAnswer.objects.create(user=user, question=quest, right_choice=answer)
                 return render(request, 'cat-questions.html', {'question':question, 'category': category})
         else:
             quest=models.Question.objects.get(id=quest_id)

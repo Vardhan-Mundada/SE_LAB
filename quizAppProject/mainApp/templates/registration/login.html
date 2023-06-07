@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}Login Page{% endblock %}
-{% block content%}
 
+{% block content%}
+    <center>
     <h1 class="my-4">Login</h1>
+</center>
     <form method="post" action="">
-        <table class="table table-bordered">
+        <table class="table table-custom" style="align-content: right;">
             {% csrf_token %}
             {{form.as_table}}
             <tr>
-                <td colspan="2"> <input type="submit" class="btn btn-primary" /></td>
+                <td colspan="2"> <input type="submit" class="btn btn-primary" style="margin-left: 36vw;" /></td>
             </tr>
         </table>
     </form>
