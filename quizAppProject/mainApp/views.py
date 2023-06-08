@@ -53,7 +53,15 @@ def submit_answer(request,cat_id,quest_id):
             return render(request, 'cat-questions.html', {'question':question, 'category': category})
         else:
             result= models.SubAnswer.objects.filter(user=request.user)
-            return render(request, 'result.html', {'result':result})
+            skipped_count=models.SubAnswer.objects.filter(user=request.user, right_choice='Question Skipped').count()
+            attempted_count=models.SubAnswer.objects.filter(user=request.user).exclude(right_choice='Question Skipped').count()
+            rightAnswers=0
+            percentage=0
+            for row in result:
+                if row.question.right_option == row.right_choice:
+                    rightAnswers+=1
+            percentage=(rightAnswers*100)/attempted_count
+            return render(request, 'result.html', {'result':result, 'total_skipped':skipped_count, 'total_attempted': attempted_count, 'rightAnswer_count': rightAnswers, 'percentage':percentage})
         
     else:
         return HttpResponse('Method not allowed!')
