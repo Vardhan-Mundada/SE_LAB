@@ -91,9 +91,7 @@
             font-size: 20px;
         }
 
-        .timer {
-            font-size: 30px;
-        }
+        
         
         .question-tab:hover {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
@@ -160,13 +158,7 @@
             });
 
 
-            $(".timer").countdowntimer({
-                seconds:"{{question.time_limit}}",
-                size : "sn",
-                timeUp:function(){
-                    $(".skip").trigger('click');
-                }
-            });
+            
         });
 
     </script>
